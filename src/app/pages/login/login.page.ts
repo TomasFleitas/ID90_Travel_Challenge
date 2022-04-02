@@ -7,6 +7,7 @@ import { Unsubscribe } from 'redux';
 import { SessionService } from 'src/app/services/session.service';
 import { IAppState } from 'src/store';
 import { clear } from './redux/actions';
+import { SessionReducerI } from './redux/reducer';
 
 @Component({
   selector: 'page-login',
@@ -16,7 +17,7 @@ import { clear } from './redux/actions';
 export class LoginPage implements OnInit {
 
   public form!: FormGroup;
-  public sessionStore: any;
+  public sessionStore?: SessionReducerI;
   private storeSub: Unsubscribe;
   public title: string = "ID90 Travel - Challenge";
 
@@ -28,7 +29,7 @@ export class LoginPage implements OnInit {
         this.router.navigate(['/hotels']);
       }
 
-      if (this.sessionStore.errorMessage) {
+      if (this.sessionStore?.errorMessage) {
         this.message.create("error", this.sessionStore.errorMessage);
         this.ngRedux.dispatch(clear());
       }

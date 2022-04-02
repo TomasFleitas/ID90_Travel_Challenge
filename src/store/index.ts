@@ -1,10 +1,10 @@
 import { AnyAction, combineReducers, Reducer } from "redux";
-import hotels_reducer from "src/app/pages/hotels/redux/reducer";
-import session_reducer from "../app/pages/login/redux/reducer";
+import hotels_reducer, { HotelsReducerI } from "src/app/pages/hotels/redux/reducer";
+import session_reducer, { SessionReducerI } from "../app/pages/login/redux/reducer";
 
 export interface IAppState {
-  session: any,
-  hotels: any
+  session: SessionReducerI,
+  hotels: HotelsReducerI
 }
 
 const STATE_NAME = "state";

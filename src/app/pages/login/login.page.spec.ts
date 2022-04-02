@@ -23,21 +23,10 @@ const correctCredentials = {
   airline: 'HAWAIIAN AIRLINES (HA)',
 }
 
-
-class SessionServiceTesting {
-  public login(data: any) {
-    return of({});
-  }
-
-  public getAirlines() {
-    return of({});
-  }
-}
-
 describe('Test pagina Login', () => {
   let loginPage: LoginPage;
   let fixture: ComponentFixture<LoginPage>;
-  let sessionSrv: SessionService;
+
 
   beforeEach(async () => {
     let routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
@@ -59,7 +48,6 @@ describe('Test pagina Login', () => {
         BrowserAnimationsModule
       ], providers: [
         { provide: Router, useValue: routerSpy },
-        { provide: SessionService, useClass: SessionServiceTesting },
         MockNgRedux
       ],
     })
@@ -70,7 +58,6 @@ describe('Test pagina Login', () => {
     fixture = TestBed.createComponent(LoginPage);
     loginPage = fixture.componentInstance;
     fixture.detectChanges();
-    sessionSrv = TestBed.inject(SessionService);
   });
 
   it('Debe existir el LoginPage', () => {

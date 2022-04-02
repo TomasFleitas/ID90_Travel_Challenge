@@ -1,13 +1,24 @@
 
 
 import { default_error_message } from "src/app/utility/utilities";
+import { HotelI } from "src/interfaces/hotels.interface";
 import createReducer from "src/store/createReducer";
 import * as types from "./types";
 
-const initialState = {
+
+export interface HotelsReducerI {
+  hotels: HotelI[],
+  loading_hotels: boolean,
+  errorMessage?: string,
+  total: number
+}
+
+
+const initialState: HotelsReducerI = {
   hotels: [],
   loading_hotels: false,
-  errorMessage: undefined
+  errorMessage: undefined,
+  total: 0
 };
 
 
@@ -24,7 +35,7 @@ const hotels_reducer = createReducer(initialState, {
       ...state,
       loading_hotels: false,
       hotels: action.payload.hotels || [],
-      total: action.payload.meta.total_pages
+      total: action.payload.meta.total_pages || 0
     };
   },
   [types.GET_HOTELS_ERROR](state: any, action: any) {

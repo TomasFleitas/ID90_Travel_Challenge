@@ -1,15 +1,26 @@
 
 
 import { default_error_message } from "src/app/utility/utilities";
+import { AerolineasI, CurrentUserI } from "src/interfaces/session.interface";
 import createReducer from "src/store/createReducer";
 import * as types from "./types";
 
-const initialState = {
+export interface SessionReducerI {
+  currentUser?: CurrentUserI,
+  airlines: AerolineasI[],
+  loading_airline: boolean,
+  loading: boolean,
+  remember: boolean,
+  errorMessage?: string
+}
+
+const initialState: SessionReducerI = {
   currentUser: undefined,
   airlines: [],
   loading_airline: false,
   loading: false,
-  remember: false
+  remember: false,
+  errorMessage: undefined
 };
 
 

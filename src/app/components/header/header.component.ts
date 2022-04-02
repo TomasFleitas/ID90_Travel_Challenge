@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Unsubscribe } from 'redux';
 import { SessionService } from 'src/app/services/session.service';
+import { CurrentUserI } from 'src/interfaces/session.interface';
 import { IAppState } from 'src/store';
 
 @Component({
@@ -13,7 +14,7 @@ import { IAppState } from 'src/store';
 export class HeaderComponent implements OnInit {
 
   private storeSub: Unsubscribe;
-  public currentUser: any;
+  public currentUser?: CurrentUserI;
 
   constructor(private ngRedux: NgRedux<IAppState>, private router: Router, private sessionSrv: SessionService) {
     this.storeSub = this.ngRedux.subscribe(() => {

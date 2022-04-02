@@ -8,6 +8,7 @@ import { HotelsService } from 'src/app/services/hotels.service';
 import { DATE_FORMAT } from 'src/app/utility/utilities';
 import { IAppState } from 'src/store';
 import { clear } from './redux/actions';
+import { HotelsReducerI } from './redux/reducer';
 
 @Component({
   selector: 'app-hotels',
@@ -17,7 +18,7 @@ import { clear } from './redux/actions';
 export class HotelsPage implements OnInit {
 
   public validateForm!: FormGroup;
-  public hotelsStore: any;
+  public hotelsStore?: HotelsReducerI;
   public paginator = { size: 10, page: 1 };
   private storeSub: Unsubscribe;
   private auxSearch: any = undefined;
@@ -27,7 +28,7 @@ export class HotelsPage implements OnInit {
       const { hotels } = this.ngRedux.getState();
       this.hotelsStore = hotels;
 
-      if (this.hotelsStore.errorMessage) {
+      if (this.hotelsStore?.errorMessage) {
         this.message.create("error", this.hotelsStore.errorMessage);
         this.ngRedux.dispatch(clear());
       }

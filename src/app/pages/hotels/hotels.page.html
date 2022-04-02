@@ -32,7 +32,7 @@
         </form>
       </div>
       <div class="hotels_table" #tableContent>
-        <nz-table [nzLoading]="hotelsStore?.loading_hotels" [nzFrontPagination]="false" [nzScroll]="{ y: 200+'px' }" (nzPageIndexChange)="pageChange($event)" (nzPageSizeChange)="sizeChange($event)" [nzTotal]="hotelsStore?.total" [nzPageIndex]="paginator.page" [nzPageSize]="paginator.size" [nzShowSizeChanger]="true" [nzShowPagination]="true" #basicTable [nzData]="hotelsStore?.hotels">
+        <nz-table [nzLoading]="hotelsStore?.loading_hotels" [nzFrontPagination]="false" [nzScroll]="{ y: 200+'px' }" (nzPageIndexChange)="pageChange($event)" (nzPageSizeChange)="sizeChange($event)" [nzTotal]="hotelsStore?.total || 0" [nzPageIndex]="paginator.page" [nzPageSize]="paginator.size" [nzShowSizeChanger]="true" [nzShowPagination]="true" #basicTable [nzData]="hotelsStore?.hotels || []">
           <thead>
             <tr>
               <th>Nombre</th>
