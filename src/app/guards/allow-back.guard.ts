@@ -16,8 +16,6 @@ export class AllowBackGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const { session } = this.ngRedux.getState()
-
-    //VER BIEN ESTO MAÑANA
     if (!!session.currentUser) return this.route.parseUrl('/hotels');
     return !!!session.currentUser;
   }
