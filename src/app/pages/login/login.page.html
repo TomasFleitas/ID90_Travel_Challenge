@@ -1,0 +1,41 @@
+<div>
+
+  <h1>{{title}}</h1>
+
+  <div class="login-content">
+    <h3>Iniciar sesión</h3>
+
+    <form nz-form [formGroup]="form" class="login-form" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Ingrese Aerolinea">
+          <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Airline" formControlName="airline">
+            <nz-option *ngFor="let item of sessionStore?.airlines || []" [nzLabel]="item.name" [nzValue]="item.name"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Ingrese nombre de usuario">
+          <nz-input-group nzPrefixIcon="user">
+            <input type="text" nz-input formControlName="username" placeholder="Username" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Ingrese contraseña">
+          <nz-input-group nzPrefixIcon="lock">
+            <input type="password" nz-input formControlName="password" placeholder="Password" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <div nz-row class="login-form-margin">
+        <div nz-col [nzSpan]="24">
+          <label nz-checkbox formControlName="remember_me">
+            <span>Remember me</span>
+          </label>
+        </div>
+      </div>
+      <button [nzLoading]="sessionStore?.loading" nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+    </form>
+  </div>
+
+</div>

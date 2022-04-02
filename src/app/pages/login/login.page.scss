@@ -1,0 +1,36 @@
+div {
+  margin: auto;
+
+  > h1 {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .login-content {
+    margin: auto;
+    background-color: gainsboro;
+    border-radius: 10px;
+    padding: 20px;
+
+    > h3 {
+      text-align: center;
+    }
+
+    .login-form {
+      margin: auto;
+      max-width: 500px;
+    }
+
+    .login-form-margin {
+      margin-bottom: 16px;
+    }
+
+    .login-form-forgot {
+      float: right;
+    }
+
+    .login-form-button {
+      width: 100%;
+    }
+  }
+}

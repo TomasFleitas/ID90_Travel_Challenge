@@ -1,0 +1,54 @@
+<div class="hotels_content">
+  <div class="hotels_header">
+    <header></header>
+  </div>
+  <div class="hotels_filter_and_table">
+    <div>
+      <h1>Buscar Hoteles</h1>
+      <div class="hotels_form">
+        <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Ingrese un destino">
+              <nz-input-group nzPrefixIcon="swap-right">
+                <input formControlName="destination" nz-input placeholder="Destino" />
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Ingrese un rango de fechas">
+              <nz-range-picker nzFormat="yyyy-MM-dd" formControlName="date_range"></nz-range-picker>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Ingrese número de huespedes">
+              <nz-input-number  formControlName="guests" [nzMax]="4" [nzMin]="1" [nzStep]="1"></nz-input-number>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control>
+              <button nz-button [nzLoading]="hotelsStore?.loading_hotels" nzType="primary" [disabled]="!validateForm.valid">Buscar</button>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </div>
+      <div class="hotels_table" #tableContent>
+        <nz-table [nzLoading]="hotelsStore?.loading_hotels" [nzFrontPagination]="false" [nzScroll]="{ y: 200+'px' }" (nzPageIndexChange)="pageChange($event)" (nzPageSizeChange)="sizeChange($event)" [nzTotal]="hotelsStore?.total" [nzPageIndex]="paginator.page" [nzPageSize]="paginator.size" [nzShowSizeChanger]="true" [nzShowPagination]="true" #basicTable [nzData]="hotelsStore?.hotels">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Cadena</th>
+              <th>Dirección</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of basicTable.data">
+              <td>{{ data.name }}</td>
+              <td>{{ data.chain }}</td>
+              <td>{{ data.location.country }} - {{ data.location.city }}</td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </div>
+    </div>
+  </div>
+</div>

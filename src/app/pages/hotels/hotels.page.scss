@@ -1,0 +1,52 @@
+.hotels_content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  .hotels_header {
+    padding: 10px;
+  }
+
+  .hotels_filter_and_table {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 10px;
+
+    > div {
+      height: 550px;
+      background-color: gainsboro;
+      border-radius: 10px;
+      width: 60%;
+      padding: 20px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+
+
+      > h1 {
+        font-size: 2rem;
+        margin: 0px;
+        text-align: center;
+      }
+
+      .hotels_form {
+        height: 30%;
+        display: flex;
+        > form {
+          margin: auto;
+        }
+      }
+
+      .hotels_table {
+        padding: 10px;
+        flex-grow: 1;
+        overflow: hidden;
+        nz-table {
+          height: 100% !important;
+        }
+      }
+    }
+  }
+}
